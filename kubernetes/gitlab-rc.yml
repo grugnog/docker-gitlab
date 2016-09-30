@@ -17,7 +17,7 @@ spec:
         image: sameersbn/gitlab:8.12.3
         env:
         - name: TZ
-          value: Asia/Kolkata
+          value: America/Los_Angeles
         - name: GITLAB_TIMEZONE
           value: America/Los_Angeles
         - name: GITLAB_SECRETS_DB_KEY_BASE
@@ -135,4 +135,6 @@ spec:
           timeoutSeconds: 1
       volumes:
       - name: data
-        emptyDir: {}
+        gcePersistentDisk:
+          pdName: gitlab-data
+          fsType: ext4

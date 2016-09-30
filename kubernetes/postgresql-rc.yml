@@ -55,4 +55,6 @@ spec:
           timeoutSeconds: 1
       volumes:
       - name: data
-        emptyDir: {}
+        gcePersistentDisk:
+          pdName: gitlab-postgres
+          fsType: ext4

@@ -37,4 +37,6 @@ spec:
           timeoutSeconds: 1
       volumes:
       - name: data
-        emptyDir: {}
+        gcePersistentDisk:
+          pdName: gitlab-redis
+          fsType: ext4
