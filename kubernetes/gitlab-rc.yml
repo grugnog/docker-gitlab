@@ -19,17 +19,28 @@ spec:
         - name: TZ
           value: Asia/Kolkata
         - name: GITLAB_TIMEZONE
-          value: Kolkata
-
+          value: America/Los_Angeles
         - name: GITLAB_SECRETS_DB_KEY_BASE
-          value: long-and-random-alpha-numeric-string
+          valueFrom:
+            secretKeyRef:
+              name: gitlab
+              key: dbkeybase
         - name: GITLAB_SECRETS_SECRET_KEY_BASE
-          value: long-and-random-alpha-numeric-string
+          valueFrom:
+            secretKeyRef:
+              name: gitlab
+              key: secretkeybase
         - name: GITLAB_SECRETS_OTP_KEY_BASE
-          value: long-and-random-alpha-numeric-string
+          valueFrom:
+            secretKeyRef:
+              name: gitlab
+              key: otpkeybase
 
         - name: GITLAB_ROOT_PASSWORD
-          value:
+          valueFrom:
+            secretKeyRef:
+              name: gitlab
+              key: rootpassword
         - name: GITLAB_ROOT_EMAIL
           value:
 
@@ -59,7 +70,10 @@ spec:
         - name: DB_USER
           value: gitlab
         - name: DB_PASS
-          value: passw0rd
+          valueFrom:
+            secretKeyRef:
+              name: gitlab
+              key: dbpass
         - name: DB_NAME
           value: gitlab_production
 

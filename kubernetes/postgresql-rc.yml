@@ -19,7 +19,10 @@ spec:
         - name: DB_USER
           value: gitlab
         - name: DB_PASS
-          value: passw0rd
+          valueFrom:
+            secretKeyRef:
+              name: gitlab
+              key: dbpass
         - name: DB_NAME
           value: gitlab_production
         - name: DB_EXTENSION
